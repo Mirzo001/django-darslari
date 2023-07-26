@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for card in card_list %}
+    <div class="post-entry">
+        <h2>{{ card.bank_name }}</h2>
+        <p>{{ card.card_number }}</p>
+    </div>
+{% endfor %}
+
+{% endblock content %}
+
