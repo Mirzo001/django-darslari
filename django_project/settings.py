@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*yl#rtcpshjsx6ikaio_!p3xncawdi0huu+c&%c00+an6u75f1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mirzo.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     "articles.apps.ArticlesConfig",  # articles dasturimizi butun loyihaga borligini bildirdik
     "bankomat.apps.BankomatConfig",
     "books.apps.BooksConfig",
+    'rest_framework',
+    "apis.apps.ApisConfig",
 ]
 
 TIME_ZONE = "Asia/Tashkent" # Bu vaqt zonasi sanaladi
