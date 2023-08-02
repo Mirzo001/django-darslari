@@ -4,3 +4,4 @@ from django.db import models
 
 class CustomUser(AbstractUser):
     age = models.PositiveIntegerField(null=True, blank=True)
+    name = models.CharField(null=True, blank=True, max_length=100)

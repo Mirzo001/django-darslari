@@ -1,5 +1,6 @@
 .venv\Scripts\Activate
 
+workon myvirtualenv
 
 python manage.py runserver
 

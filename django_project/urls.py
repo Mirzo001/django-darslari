@@ -12,5 +12,8 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")),
     path("articles/", include("articles.urls")),  # new
     path("bankomat/", include("bankomat.urls")),
-    path("api/", include("apis.urls")),
+    # path("api/", include("apis.urls")),
+    path("api/", include("todos.urls")),
+    path("api/v1/", include("posts.urls")),
+    path("api-auth/", include("rest_framework.urls")),  # new
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
