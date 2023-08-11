@@ -15,6 +15,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+from environs import Env
+env = Env() 
+env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -48,6 +51,11 @@ INSTALLED_APPS = [
     "todos.apps.TodosConfig",
     "rest_framework.authtoken",
     "dj_rest_auth",
+    "allauth",  # new
+    "allauth.account",  # new
+    "allauth.socialaccount",  # new
+    "dj_rest_auth.registration",
+    "drf_spectacular",
 ]
 
 TIME_ZONE = "Asia/Tashkent"  # Bu vaqt zonasi sanaladi
@@ -70,6 +78,14 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Blog API Loyihasi",
+    "DESCRIPTION": "DRF da yozilgan Blog API o'rganish uchun",
+    "VERSION": "1.0.0",
+    # OTHER SETTINGS
 }
 
 ROOT_URLCONF = "django_project.urls"
@@ -85,6 +101,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.request",
             ],
         },
     },
