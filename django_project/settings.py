@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "apis.apps.ApisConfig",
     "todos.apps.TodosConfig",
+    "rest_framework.authtoken",
+    "dj_rest_auth",
 ]
 
 TIME_ZONE = "Asia/Tashkent"  # Bu vaqt zonasi sanaladi
@@ -63,6 +65,10 @@ MIDDLEWARE = [
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",  # new
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [  # new
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
     ],
 }
 
