@@ -23,10 +23,9 @@ env.read_env()
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-*yl#rtcpshjsx6ikaio_!p3xncawdi0huu+c&%c00+an6u75f1"
-
+SECRET_KEY = env.str("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = ["mirzo.pythonanywhere.com", "127.0.0.1"]
 
@@ -114,10 +113,7 @@ WSGI_APPLICATION = "django_project.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+"default": env.dj_db_url("DATABASE_URL") # new
 }
 
 
