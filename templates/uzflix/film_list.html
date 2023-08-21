@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="">
+        <title>
+            {% block title %}
+                Kinolar
+            {% endblock title %}
+        </title>
+      <link rel="stylesheet" href="{% static 'base.css' %}">
+    </head>
+    <body>
+        {% block content %}
+            <div class="detail-main">
+                <div class="detail">
+                    <h1>UZFLIX</h1>
+                    {% for film in film_list %}
+                        <ul>
+                            <h2>{{ film.nomi }}</h2>
+                            <li>Haqida: {{ film.haqida }}</li>
+                            <li>Yili: {{ film.yoli }}</li>
+                        </ul>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endblock content %}
+    </body>
+</html>

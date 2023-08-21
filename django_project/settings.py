@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",  # new
     "dj_rest_auth.registration",
     "drf_spectacular",
+    "uzflix.apps.UzflixConfig",
 ]
 
 TIME_ZONE = "Asia/Tashkent"  # Bu vaqt zonasi sanaladi

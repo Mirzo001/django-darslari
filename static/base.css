@@ -51,3 +51,11 @@ header h1 a {
 btnsubmit{
     width: 100px;
 }
+
+h2{
+    color: red;
+}
+
+h1{
+    text-align: center;
+}
