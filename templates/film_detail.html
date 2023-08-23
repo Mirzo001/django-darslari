@@ -1,0 +1,24 @@
+{% extends "film_list.html" %}
+{% block title %}
+    Kino haqida batafsil
+{% endblock title %}
+{% block content %}
+    <div class="detail">
+        <h1>UZFLIX</h1>
+        <ul>
+            <h2>{{ film.nomi }}</h2>
+            <li>Haqida: {{ film.haqida }}</li>
+            <li>Yili: {{ film.yili }}</li>
+            <li>Mamlakat: {{ film.mamlakat }}</li>
+            <li> Aktyorlar:
+                {% for aktyor in film.aktyorlar.all %}
+                    {{ aktyor.ism }},
+                {% endfor %}
+            <li> Janrlar:
+            {% for janr in film.genres.all %}
+                {{ janr.name }},
+            {% endfor %}
+        </li>
+        </ul>
+    </div>
+{% endblock content %}

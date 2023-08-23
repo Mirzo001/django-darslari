@@ -83,8 +83,8 @@ class Film(models.Model):
         return reverse("movie_detail", kwargs={"slug": self.url})
 
     class Meta:
-        verbose_name = "Filim"
-        verbose_name_plural = "Filimlar"
+        verbose_name = "Film"
+        verbose_name_plural = "Filmlar"
 
 
 class Baho(models.Model):

@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="">
+        <meta name="description" content="">
         <title>
             {% block title %}
                 Kinolar
@@ -19,7 +20,7 @@
                     <h1>UZFLIX</h1>
                     {% for film in film_list %}
                         <ul>
-                            <h2>{{ film.nomi }}</h2>
+                            <a href="{% url 'film_detail' film.pk %}"><h2>{{ film.nomi }}</h2></a> 
                             <li>Haqida: {{ film.haqida }}</li>
                             <li>Yili: {{ film.yoli }}</li>
                         </ul>
