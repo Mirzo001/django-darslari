@@ -1,0 +1,9 @@
+{% extends "film_list.html" %}
+{% block content %}
+    <h1>O'chirish</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Siz Rostan ham "{{ film.nomi }}" filmini o'chirmoqchimisiz?</p>
+        <button class="btn btn-danger ml-2" type="submit">Tasdiqlash</button>
+    </form>
+{% endblock content %}

@@ -17,12 +17,12 @@
         {% block content %}
             <div class="detail-main">
                 <div class="detail">
-                    <h1>UZFLIX</h1>
+                    <h1 class="linklogo"><a href="{% url 'film_list' %}">UZFLIX</a></h1>
                     {% for film in film_list %}
                         <ul>
-                            <a href="{% url 'film_detail' film.pk %}"><h2>{{ film.nomi }}</h2></a> 
+                            <h2 class="filmname"><a href="{% url 'film_detail' film.pk %}">{{ film.nomi }}</a> </h2>
                             <li>Haqida: {{ film.haqida }}</li>
-                            <li>Yili: {{ film.yoli }}</li>
+                            <li>Yili: {{ film.yili }}</li>
                         </ul>
                     {% endfor %}
                 </div>

@@ -4,21 +4,109 @@
 {% endblock title %}
 {% block content %}
     <div class="detail">
-        <h1>UZFLIX</h1>
+        <h1 class="linklogo"><a href="{% url 'film_list' %}">UZFLIX</a></h1>
         <ul>
             <h2>{{ film.nomi }}</h2>
             <li>Haqida: {{ film.haqida }}</li>
             <li>Yili: {{ film.yili }}</li>
             <li>Mamlakat: {{ film.mamlakat }}</li>
-            <li> Aktyorlar:
-                {% for aktyor in film.aktyorlar.all %}
-                    {{ aktyor.ism }},
-                {% endfor %}
-            <li> Janrlar:
-            {% for janr in film.genres.all %}
-                {{ janr.name }},
-            {% endfor %}
-        </li>
+            <li>
+                Aktyorlar:
+                {% for aktyor in film.aktyorlar.all %}{{ aktyor.ism|capfirst }}{% if not forloop.last %}, {% endif %}{% endfor %}
+            </li>
+            <li>
+                Janrlar:
+                {% for janr in film.genres.all %}{{ janr.name|capfirst }}{% if not forloop.last %}, {% endif %}{% endfor %}
+            </li>
         </ul>
+
+        <hr>
+        <h4>Comments</h4>
+        {% for comment in film.izoh_set.all %}<p>{{ comment.user }} &middot; {{ comment.matn }}</p>{% endfor %}
+        <hr>
+    
+        <h4>Add a comment</h4>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-success ml-2" type="submit">Save</button>
+        </form>
+
+     <div class="card-body">
+        {% if new_comment %}
+        <div class="alert alert-success" role="alert">
+          Your comment is awaiting moderation
+        </div>
+        {% else %}
+        <h3>Leave a comment</h3>
+        <form method="post" style="margin-top: 1.3em;">
+          {{ comment_form.as_p }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+        </form>
+        {% endif %}
+      </div>
+
+      <h1>Rate {{ film.title }}</h1>
+  <form method="post">
+    {% csrf_token %}
+    <div class="star-rating">
+      <input type="radio" id="star-1" name="star" value="1">
+      <label for="star-1" title="1 star"></label>
+      <input type="radio" id="star-2" name="star" value="2">
+      <label for="star-2" title="2 star"></label>
+      <input type="radio" id="star-1" name="star" value="1">
+      <label for="star-1" title="1 star"></label>
+      <input type="radio" id="star-1" name="star" value="1">
+      <label for="star-1" title="1 star"></label>
+      <input type="radio" id="star-1" name="star" value="1">
+      <label for="star-1" title="1 star"></label>
+      <input type="radio" id="star-1" name="star" value="1">
+      <label for="star-1" title="1 star"></label>
+      <input type="radio" id="star-1" name="star" value="1">
+      <label for="star-1" title="1 star"></label>
+      <input type="radio" id="star-1" name="star" value="1">
+      <label for="star-1" title="1 star"></label>
+      <input type="radio" id="star-1" name="star" value="1">
+      <label for="star-1" title="1 star"></label>
+      <input type="radio" id="star-1" name="star" value="1">
+      <label for="star-1" title="1 star"></label>
+    </div>
+    <button type="submit">Submit Rating</button>
+  </form>
+  <a href="{% url 'film_detail' pk=film.pk %}">Back to Film Detail</a>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const ratingForm = document.getElementById("rating-form");
+        const starInputs = ratingForm.querySelectorAll('input[type="radio"]');
+      
+        // Add event listener to the form for submitting the rating
+        ratingForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+      
+          // Find the selected star rating
+          let selectedStar;
+          starInputs.forEach((starInput) => {
+            if (starInput.checked) {
+              selectedStar = starInput.value;
+            }
+          });
+      
+          if (selectedStar) {
+            // Send the selected star rating to the server using AJAX or form submission
+            // You can implement this part based on your server-side logic
+            console.log("Selected star rating:", selectedStar);
+            alert("Rating submitted successfully!");
+          } else {
+            alert("Please select a star rating.");
+          }
+        });
+      });
+      
+  </script>
+
+        <a href="{% url 'film_update' film.pk %}">O'zgartirish</a> |
+        <a href="{% url 'film_delete' film.pk %}">O'chirish</a> 
     </div>
 {% endblock content %}

@@ -59,3 +59,18 @@ h2{
 h1{
     text-align: center;
 }
+
+.linklogo a{
+    text-decoration: none;
+}
+
+.filmname a{
+    text-decoration: none;
+    color: steelblue;
+}
+.filmname a:hover{
+    text-decoration: none;
+    color: rgb(51, 186, 217);
+   
+}
+

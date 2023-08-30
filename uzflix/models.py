@@ -80,7 +80,7 @@ class Film(models.Model):
         return self.nomi
 
     def get_absolute_url(self):
-        return reverse("movie_detail", kwargs={"slug": self.url})
+        return reverse("film_detail", kwargs={"pk": self.pk})
 
     class Meta:
         verbose_name = "Film"
@@ -91,7 +91,7 @@ class Baho(models.Model):
     """Baho"""
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    star = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+    star = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)], null=True, blank=True, default=None)
     film = models.ForeignKey(Film, on_delete=models.CASCADE, verbose_name="film")
 
     class Meta:
@@ -113,5 +113,5 @@ class Izoh(models.Model):
 
     class Meta:
         verbose_name = "Izoh"
-        verbose_name_plural = "Izoh"
+        verbose_name_plural = "Izohlar"
 
